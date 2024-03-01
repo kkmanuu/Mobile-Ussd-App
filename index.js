@@ -10,7 +10,7 @@ app.get("/api/test", function (req, res) {
     res.send("Testing request");
 });
 app.post('/ussd', (req, res) => {
-    // Read the variables sent via POST from our API
+    //  variables sent via POST from our API
     const {
         sessionId,
         serviceCode,
@@ -21,7 +21,7 @@ app.post('/ussd', (req, res) => {
     let response = '';
 
     if (text == '') {
-        // This is the first request. Note how we start the response with CON
+        // This is the first request.  we start the response with CON
         response = `CON What would you like to check
         1. My account
         2. My phone number`;
@@ -31,12 +31,12 @@ app.post('/ussd', (req, res) => {
         1. Account number`;
     } else if ( text == '2') {
         // Business logic for first level response
-        // This is a terminal request. Note how we start the response with END
+        // This is a terminal request.  we start the response with END
         response = `END Your phone number is ${phoneNumber}`;
     } else if ( text == '1*1') {
         // This is a second level response where the user selected 1 in the first instance
         const accountNumber = 'ACC100101';
-        // This is a terminal request. Note how we start the response with END
+        // This is a terminal request. we start the response with END
         response = `END Your account number is ${accountNumber}`;
     }
 
